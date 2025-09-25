@@ -1,0 +1,123 @@
+.highlight-border {
+    border: 2px solid red !important;
+    box-shadow: 0 0 5px red;
+}
+.payment-option input[type="radio"] {
+    display: none;
+}
+
+.payment-option label {
+    cursor: pointer;
+    padding: 10px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.payment-option input[type="radio"]:checked + label {
+    background-color: #84c015;
+    color: white;
+    border-color: #84c015;
+}
+
+.payment-option label:hover {
+    border-color: #84c015;
+    color: #84c015;
+}
+
+.payment-option i {
+    margin-right: 5px;
+}
+
+.position-wrapper {
+    position: relative;
+}
+
+.payment-icons {
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.payment-icons i {
+    margin-left: 2px;
+    font-size: 1.2em;
+}
+.toggle-section {
+    overflow: hidden;
+    transition: all 0.3s ease;
+    opacity: 0;
+    max-height: 0;
+    visibility: hidden;
+}
+
+.toggle-section.active {
+    opacity: 1;
+    max-height: 1000px; /* enough to reveal content */
+    visibility: visible;
+}
+.secure-omise {
+    position: relative;
+    top: 6px;
+    font-weight: 100;
+    font-size: 14px;
+}
+/* ==========================
+   Upload Spinner
+   ========================== */
+#upload-spinner {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    text-align: center;
+    width: 20vw;
+    max-width: 160px;
+    min-width: 80px;
+}
+
+.spinner {
+    border: 1em solid #f3f3f3;
+    border-top: 1em solid #84c015;
+    border-radius: 50%;
+    width: 100%;
+    aspect-ratio: 1;
+    animation: spin 0.8s linear infinite;
+    box-sizing: border-box;
+}
+
+/* ==========================
+   Success Checkmark
+   ========================== */
+#success-check {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+#success-check svg {
+    width: 100%;
+    height: auto;
+    fill: #84c015;
+    animation: checkmark-pop 0.3s ease-out;
+}
+
+/* ==========================
+   Fade Out Animation for Spinner
+   ========================== */
+#upload-spinner.fade-out {
+    animation: fadeOut 1s ease-out forwards;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

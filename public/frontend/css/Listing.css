@@ -1,0 +1,440 @@
+/* ==========================
+   Checkbox Styles
+   ========================== */
+.checkbox-container {
+    position: relative;
+    display: inline-block;
+    /* width: 100%; */
+}
+
+.checkbox-container input[type="checkbox"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.checkbox-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: 1px solid #e5e7eb;
+    padding: 1rem;
+    border-radius: 10px;
+    transition: 0.2s;
+    color: #333;
+    z-index: 1;
+    position: relative;
+}
+
+/* When checkbox is checked, apply green border */
+.checkbox-container input:checked + .checkbox-card {
+    border: 2px solid #84c015;
+    background-color: #fff;
+}
+
+/* ==========================
+   Buttons
+   ========================== */
+.btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#add-more-photos,
+#submit-gallery {
+    border: 1px solid #84c015;
+    background: white;
+    color: #555;
+    font-size: 15px;
+    padding: 10px 16px;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#add-more-photos:hover,
+#submit-gallery:hover {
+    background-color: #84c015;
+    color: white;
+}
+
+#submit-gallery:disabled,
+#salePrice:disabled,
+#rentPrice:disabled,
+#preview:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+    border: none;
+}
+
+/* ==========================
+   Uploaded Gallery Container & Items
+   ========================== */
+#uploaded-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+#uploaded-gallery .dz-preview {
+    cursor: all-scroll;
+    position: relative;
+    border-radius: 20px;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    margin: 10px;
+}
+
+#uploaded-gallery .dz-image {
+    width: 100%;
+    height: 100%;
+}
+
+#uploaded-gallery .dz-preview.heic-preview .dz-image {
+    background-color: #84c015;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+#uploaded-gallery .dz-preview.heic-preview .dz-image img {
+    display: none;
+}
+
+/* ==========================
+   Media Uploader & Dropzone Previews
+   ========================== */
+#media-uploader .dz-preview {
+    cursor: all-scroll;
+    position: relative;
+    border-radius: 20px;
+}
+
+#media-uploader .dz-preview.heic-preview .dz-image {
+    background-color: #84c015;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+
+.dropzone .dz-preview .dz-image img,
+#uploaded-gallery .dz-image img {
+    cursor: all-scroll;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.highlight-border {
+    border: 3px dotted red !important;
+}
+
+/* Hide Dropzone Details and Remove Buttons */
+.dz-details,
+.dz-remove {
+    display: none !important;
+}
+
+/* ==========================
+   Cover Icon and Placeholder
+   ========================== */
+.cover-icon,
+.cover-placeholder {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 25px;
+    height: 25px;
+    padding: 2px;
+    border-radius: 3px;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.cover-placeholder {
+    top: 10px;
+    left: 10px;
+}
+
+/* ==========================
+   Custom Remove Button
+   ========================== */
+.dz-remove-custom {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    color: black;
+    font-size: 18px;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    z-index: 30;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease;
+}
+
+.dz-remove-custom:hover {
+    background-color: #eee;
+}
+
+/* ==========================
+   Progress Bars on Previews
+   ========================== */
+.dz-preview .dz-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+}
+
+.dz-preview .dz-upload {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background-color: #84c015;
+    transition: width 0.3s ease;
+}
+
+.dz-progress {
+    pointer-events: none;
+}
+
+/* ==========================
+   Touch Action and Highlight
+   ========================== */
+.dz-preview {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+/* ==========================
+   Upload Spinner
+   ========================== */
+#upload-spinner {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    text-align: center;
+    width: 20vw;
+    max-width: 160px;
+    min-width: 80px;
+}
+
+.spinner {
+    border: 1em solid #f3f3f3;
+    border-top: 1em solid #84c015;
+    border-radius: 50%;
+    width: 100%;
+    aspect-ratio: 1;
+    animation: spin 0.8s linear infinite;
+    box-sizing: border-box;
+}
+
+/* ==========================
+   Success Checkmark
+   ========================== */
+#success-check {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+#success-check svg {
+    width: 100%;
+    height: auto;
+    fill: #84c015;
+    animation: checkmark-pop 0.3s ease-out;
+}
+
+/* ==========================
+   Fade Out Animation for Spinner
+   ========================== */
+#upload-spinner.fade-out {
+    animation: fadeOut 1s ease-out forwards;
+}
+
+/* ==========================
+   Modal Dialog Styles
+   ========================== */
+.md-dialog-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.32);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.md-dialog {
+    background: #fff;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    animation: dialogEntrance 0.25s ease-out;
+    color: black;
+}
+
+.md-dialog__header {
+    padding: 24px 24px 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: black;
+}
+
+.md-dialog__body {
+    padding: 20px 24px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: black;
+}
+
+.md-dialog__actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 16px 16px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.md-dialog__button {
+    border: 1px solid #84c015;
+    background: white;
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.md-dialog__button:hover {
+    background-color: #84c015;
+    color: white;
+}
+
+/* ==========================
+   Media Queries
+   ========================== */
+@media (max-width: 480px) {
+    #uploaded-gallery .dz-preview {
+        width: 30vw;
+        height: 30vw;
+        margin: 5px;
+    }
+
+    #uploaded-gallery .dz-preview,
+    #uploaded-gallery .dz-image {
+        width: 200px !important;
+        height: 200px !important;
+    }
+    .checkbox-container {
+        width: 100%;
+    }
+}
+
+@media (max-height: 600px) {
+    .md-dialog-backdrop {
+        align-items: flex-start;
+    }
+
+    .md-dialog {
+        margin-top: 40px;
+    }
+}
+
+/* ==========================
+   Keyframes for Animations
+   ========================== */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes checkmark-pop {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes dialogEntrance {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.address-fields {
+    position: relative;
+    z-index: 1000;
+}
