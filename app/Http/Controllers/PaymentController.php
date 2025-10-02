@@ -18,6 +18,9 @@ use App\Models\UserPlan;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
+use App\Notifications\PaymentReceiptNotification;
 
 class PaymentController extends Controller
 {
@@ -257,6 +260,18 @@ class PaymentController extends Controller
 
 
                     DB::commit();
+
+                    // Send Email Receipt
+                    try {
+                        $userData->notify(new PaymentReceiptNotification(
+                            $userData,
+                            $package,
+                            Billing::find($billing_id),
+                            $invoice
+                        ));
+                    } catch (\Exception $e) {
+                        Log::error('Email sending failed: ' . $e->getMessage());
+                    }
 
                     // ✅ Save order, update user, etc.
                     return redirect()->route('dashboard')->with('notification', 'ชำระเงินสำเร็จ! คุณได้ ' . $package->package_credits . ' เครดิตสำหรับลงประกาศ');
